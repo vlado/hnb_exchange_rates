@@ -1,5 +1,5 @@
 require "minitest/autorun"
-require_relative "../lib/hnb_exchange_rates/parser"
+require "hnb_exchange_rates/parser"
 
 class TestParser < Minitest::Test
 

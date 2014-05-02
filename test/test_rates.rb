@@ -1,6 +1,6 @@
 require "minitest/autorun"
 require "webmock/minitest"
-require_relative "../lib/hnb_exchange_rates/rates"
+require "hnb_exchange_rates/rates"
 
 class TestRates < Minitest::Test
 

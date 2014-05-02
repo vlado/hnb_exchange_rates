@@ -1,6 +1,6 @@
 require "date"
-require_relative "hnb_exchange_rates/version"
-require_relative "hnb_exchange_rates/rates"
+require "hnb_exchange_rates/version"
+require "hnb_exchange_rates/rates"
 
 module HnbExchangeRates
 

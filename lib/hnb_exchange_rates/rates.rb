@@ -1,6 +1,6 @@
 require "open-uri"
-require_relative "parser"
-require_relative "data"
+require "hnb_exchange_rates/parser"
+require "hnb_exchange_rates/data"
 
 module HnbExchangeRates
   class Rates
