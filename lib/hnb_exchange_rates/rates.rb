@@ -29,7 +29,7 @@ module HnbExchangeRates
       rates = data.rates[curr_code]
       xrate = rates[rate_type]
 
-      (xrate / rates[:unit]).round(8)
+      round(xrate / rates[:unit])
     end
 
 
@@ -66,6 +66,10 @@ module HnbExchangeRates
         InvalidRateTypeError,
         "#{rate_type} is invalid. Supported rate_types are: #{RATE_TYPES.join(', ')}"
       )
+    end
+
+    def round(number, precision = 8)
+      (number * 10**precision).round.to_f / 10**precision
     end
 
   end
