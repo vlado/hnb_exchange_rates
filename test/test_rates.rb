@@ -7,8 +7,8 @@ class TestRates < Minitest::Test
   def setup
     @date = Date.civil(2014, 4, 10)
     @rates = HnbExchangeRates::Rates.new(@date)
-    stub_request(:any, "http://www.hnb.hr/tecajn/f100414.dat")
-      .to_return(:body => File.new("test/fixtures/100414.dat"))
+    stub_request(:any, "http://www.hnb.hr/tecajn/f100414.dat").
+      to_return(:body => File.new("test/fixtures/100414.dat"))
   end
 
   def test_that_data_is_of_proper_type
