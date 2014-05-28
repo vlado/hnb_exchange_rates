@@ -1,6 +1,5 @@
-require "open-uri"
-require "hnb_exchange_rates/parser"
 require "hnb_exchange_rates/data"
+require "hnb_exchange_rates/grabber"
 
 module HnbExchangeRates
   class Rates
@@ -26,28 +25,18 @@ module HnbExchangeRates
       raise_if_currency_is_invalid(curr_code)
       raise_if_rate_type_is_invalid(rate_type)
 
-      rates = data.rates[curr_code]
-      xrate = rates[rate_type]
+      rates = data.rates[curr_code.to_s]
+      xrate = rates[rate_type.to_s]
 
-      round(xrate / rates[:unit])
+      round(xrate / rates["unit"])
     end
 
 
     private
 
     def get_data
-      HnbExchangeRates::Data.new(
-        parser.parse(open_and_read)
-      )
-    end
-
-    def open_and_read
-      stamp = date.strftime("%d%m%y")
-      open("http://www.hnb.hr/tecajn/f#{stamp}.dat").read
-    end
-
-    def parser
-      @parser ||= HnbExchangeRates::Parser.new
+      raw_data = HnbExchangeRates::Grabber.new.grab(@date)
+      HnbExchangeRates::Data.new(raw_data)
     end
 
     def raise_if_currency_is_invalid(currency)

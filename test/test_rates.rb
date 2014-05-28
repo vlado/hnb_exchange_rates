@@ -1,14 +1,13 @@
-require "minitest/autorun"
-require "webmock/minitest"
+require "test_helper"
 require "hnb_exchange_rates/rates"
 
 class TestRates < Minitest::Test
 
   def setup
-    @date = Date.civil(2014, 4, 10)
+    sweep_cache
+    stub_hnb_web_requests
+    @date = Date.parse("2014-05-10")
     @rates = HnbExchangeRates::Rates.new(@date)
-    stub_request(:any, "http://www.hnb.hr/tecajn/f100414.dat").
-      to_return(:body => File.new("test/fixtures/100414.dat"))
   end
 
   def test_that_data_is_of_proper_type
@@ -28,20 +27,20 @@ class TestRates < Minitest::Test
   end
 
   def test_that_exchange_rate_returns_middle_rate_by_default
-    assert_equal 5.189934, @rates.exchange_rate("AUD")
- end
+    assert_equal 5.145121, @rates.exchange_rate("AUD")
+  end
 
   def test_that_exchange_rate_returns_proper_rate_type
-    assert_equal 5.189934, @rates.exchange_rate("AUD", :middle)
-    assert_equal 5.174364, @rates.exchange_rate("AUD", :buying)
-    assert_equal 5.205504, @rates.exchange_rate("AUD", :selling)
+    assert_equal 5.145121, @rates.exchange_rate("AUD", :middle)
+    assert_equal 5.129686, @rates.exchange_rate("AUD", :buying)
+    assert_equal 5.160556, @rates.exchange_rate("AUD", :selling)
   end
 
   def test_exchange_rate_when_currency_unit_is_100
-    assert_equal 0.02508249, @rates.exchange_rate("HUF")
-    assert_equal 0.02500724, @rates.exchange_rate("HUF", :buying)
-    assert_equal 0.02515774, @rates.exchange_rate("HUF", :selling)
-    assert_equal 0.05421802, @rates.exchange_rate("JPY")
+    assert_equal 0.02498333, @rates.exchange_rate("HUF")
+    assert_equal 0.02490838, @rates.exchange_rate("HUF", :buying)
+    assert_equal 0.02505828, @rates.exchange_rate("HUF", :selling)
+    assert_equal 0.05395844, @rates.exchange_rate("JPY")
   end
 
   def test_that_exchange_rate_raises_if_currency_is_invalid

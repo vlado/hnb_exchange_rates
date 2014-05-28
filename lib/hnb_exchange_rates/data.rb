@@ -8,7 +8,7 @@ module HnbExchangeRates
     end
 
     def rates
-      @attributes[:rates]
+      @attributes["rates"]
     end
 
   end
