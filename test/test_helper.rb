@@ -11,6 +11,7 @@ module HnbExchangeRates
   module TestHelpers
 
     def stub_hnb_web_requests
+      require 'addressable/uri'
       fixtures_root = File.join(File.dirname(__FILE__), "fixtures", "responses")
       uri_template = Addressable::Template.new("www.hnb.hr/tecajn/f{stamp}.dat")
       stub_request(:get, uri_template).to_return do |request|
