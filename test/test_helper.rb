@@ -1,3 +1,4 @@
+require "rubygems"
 require "minitest/autorun"
 require "webmock/minitest"
 require "hnb_exchange_rates"
