@@ -29,7 +29,7 @@ class TestRates < Minitest::Test
 
   def test_that_exchange_rate_returns_middle_rate_by_default
     assert_equal 5.189934, @rates.exchange_rate("AUD")
- end
+  end
 
   def test_that_exchange_rate_returns_proper_rate_type
     assert_equal 5.189934, @rates.exchange_rate("AUD", :middle)
