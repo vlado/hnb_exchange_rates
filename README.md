@@ -1,6 +1,6 @@
 # HnbExchangeRates
 
-TODO: Write a gem description
+Fetch exchange rates from from www.hnb.hr (Croatian National Bank)
 
 ## Installation
 

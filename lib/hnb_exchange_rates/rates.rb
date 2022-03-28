@@ -43,7 +43,7 @@ module HnbExchangeRates
 
     def open_and_read
       stamp = date.strftime("%d%m%y")
-      open("http://www.hnb.hr/tecajn/f#{stamp}.dat").read
+      URI.open("http://www.hnb.hr/tecajn/f#{stamp}.dat").read
     end
 
     def parser
