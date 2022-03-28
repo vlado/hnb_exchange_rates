@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = HnbExchangeRates::VERSION
   spec.authors       = ["Vlado Cingel"]
   spec.email         = ["vladocingel@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Fetch exchange rates from from www.hnb.hr (Croatian National Bank)}
+  spec.summary       = %q{Fetch exchange rates from from www.hnb.hr (Croatian National Bank)}
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler", "~> 1.3"
+  spec.add_development_dependency "bundler", ">= 2.2.33"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "minitest", "~> 5.3.2"
   spec.add_development_dependency "webmock", "~> 1.17.4"
